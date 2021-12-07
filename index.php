@@ -9,4 +9,8 @@ $app->router->get('/', function(){
     return 'Hello Wetas';
 });
 
+$app->router->get('/contact', function(){
+    return 'Contact';
+});
+
 $app->run();
