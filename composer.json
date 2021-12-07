@@ -1,0 +1,15 @@
+{
+    "name": "wetas/phpmvc-framework",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "wetas2020",
+            "email": "elgabouri_saad@gmatil.com"
+        }
+    ],
+    "require": {}
+}
