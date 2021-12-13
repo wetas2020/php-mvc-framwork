@@ -11,5 +11,7 @@
             "email": "elgabouri_saad@gmatil.com"
         }
     ],
-    "require": {}
+    "require": {
+        "vlucas/phpdotenv": "^5.4"
+    }
 }
