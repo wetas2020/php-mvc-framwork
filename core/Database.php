@@ -62,6 +62,11 @@ class Database
         return $statement->fetchAll(\PDO::FETCH_COLUMN);
     }
 
+    protected function log($message)
+    {
+        echo '[' . date('Y-m-d:i:s') . '] - ' . $message . PHP_EOL;
+    }
+
     public function saveMigrations(array $migrations)
     {
         $str = implode(",", array_map(fn($m) => "('$m')", $migrations));
@@ -71,8 +76,8 @@ class Database
         $statement->execute();
     }
 
-    protected function log($message)
+    public function prepare($sql)
     {
-        echo '[' . date('Y-m-d:i:s') . '] - ' . $message . PHP_EOL;
+        return $this->pdo->prepare($sql);
     }
 }
