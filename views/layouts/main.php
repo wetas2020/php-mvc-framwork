@@ -50,7 +50,12 @@ echo '</pre>';
                 <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="/login">Welcome <?php echo Application::$app->user->getDisplayName(); ?>
+                           href="/profile"> Profile
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/logout">Welcome <?php echo Application::$app->user->getDisplayName(); ?>
                             (Logout)
                         </a>
                     </li>

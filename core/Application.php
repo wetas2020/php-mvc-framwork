@@ -11,11 +11,11 @@ class Application
     public Response $response;
     public Session $session;
     public ?DbModel $user;
-//    public static string $userClass;
     public string $userClass;
+    public string $layout = 'main';
 
     public Database $database;
-    public Controller $controller;
+    public ?Controller $controller = null;
 
     public function __construct($rootPath, array $config)
     {
@@ -40,9 +40,22 @@ class Application
 
     }
 
+    public static function isGuest()
+    {
+        return !self::$app->user;
+    }
+
     public function run()
     {
-        echo $this->router->resolve();
+        try {
+            echo $this->router->resolve();
+        } catch (\Exception $e) {
+            $this->response->setStatusCode($e->getCode());
+            echo $this->router->renderView('_error', [
+                'exception' => $e
+            ]);
+        }
+
     }
 
     /**
@@ -74,9 +87,5 @@ class Application
     {
         $this->user = null;
         $this->session->remove('user');
-    }
-
-    public static function isGuest() {
-        return !self::$app->user;
     }
 }
