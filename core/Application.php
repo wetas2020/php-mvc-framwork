@@ -37,7 +37,7 @@ class Application
         } else {
             $this->user = null;
         }
-        
+
     }
 
     public function run()
@@ -74,5 +74,9 @@ class Application
     {
         $this->user = null;
         $this->session->remove('user');
+    }
+
+    public static function isGuest() {
+        return !self::$app->user;
     }
 }
