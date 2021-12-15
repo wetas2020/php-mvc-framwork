@@ -1,3 +1,9 @@
+<?php
+echo '<pre>';
+var_dump(\app\core\Application::$app->user);
+echo '</pre>';
+
+?>
 <!doctype html>
 <html lang="en">
 <head>

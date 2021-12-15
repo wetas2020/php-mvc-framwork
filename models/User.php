@@ -59,4 +59,9 @@ class User extends DbModel
             'confirmPassword' => 'Confirm password'
         ];
     }
+
+    public function primaryKey(): string
+    {
+        return 'id';
+    }
 }

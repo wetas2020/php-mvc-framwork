@@ -11,16 +11,6 @@ class Router
     protected array $routes = [];
 
     // get_type method implementation
-    public function get($path, $callback)
-    {
-        $this->routes['get'][$path] = $callback;
-    }
-
-    // post_type method implementation
-    public function post($path, $callback)
-    {
-        $this->routes['post'][$path] = $callback;
-    }
 
     public function __construct(Request $request, Response $response)
     {
@@ -28,7 +18,20 @@ class Router
         $this->response = $response;
     }
 
+    // post_type method implementation
+
+    public function get($path, $callback)
+    {
+        $this->routes['get'][$path] = $callback;
+    }
+
+    public function post($path, $callback)
+    {
+        $this->routes['post'][$path] = $callback;
+    }
+
     //resolve: determine path and current methods => execute and output the result
+
     public function resolve()
     {
         $path = $this->request->getPath();
@@ -45,7 +48,7 @@ class Router
             Application::$app->controller = new $callback[0];
             $callback[0] = Application::$app->controller;
         }
-        return call_user_func($callback, $this->request) ;
+        return call_user_func($callback, $this->request, $this->response);
     }
 
     //replace the layout placeholder with the content of the view
